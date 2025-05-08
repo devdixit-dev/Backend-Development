@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat App</title>
+</head>
+<body>
+  <h2>Chat App</h2>
+
+  <!-- input and button -->
+  <input type="text" id="message" placeholder="Enter message">
+  <button id="sendBtn">Send</button>
+
+  <!-- show all messages here -->
+  <div id="messages"></div>
+
+  <!-- script that we need to add in the socket io -->
+  <script src="/socket.io/socket.io.js"></script>
+  
+  <script>
+    // setup socket
+    const socket = io();
+
+    // input & getting elements
+    const input = document.getElementById('message');
+    const sendBtn = document.getElementById('sendBtn');
+    const allMessages = document.getElementById('messages');
+
+    // check all messages that we shared
+    socket.on('message', message => {
+      const p = document.createElement('p');
+      p.innerText = message;
+      allMessages.appendChild(p);
+    });
+
+    // add event listener on send button
+    sendBtn.addEventListener('click', (e) => {
+      const message = input.value;
+      socket.emit('user-message', message);
+    });
+
+  </script>
+</body>
+</html>
