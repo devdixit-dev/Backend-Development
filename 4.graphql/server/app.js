@@ -66,7 +66,12 @@ const server = new ApolloServer({
 });
 
 startStandaloneServer(server, {
-  listen: { port }
+  listen: { port },
+  context: () => ({}),
+  cors: {
+    origin: 'http://localhost:5173/',
+    // credentials: true
+  }
 })
 .then(() => {
   console.log(`GraphQL is working on port ${port}`);
