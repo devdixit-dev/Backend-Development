@@ -25,7 +25,7 @@ const getSingleUser = async (parent, {id}) => {
 const getTodoUser = async(todo) => {
   const response = await axios.get(`https://jsonplaceholder.typicode.com/users/${todo.userId}`);
   const output = response.data
-  return output
+  return output;
 }
 
 const server = new ApolloServer({
