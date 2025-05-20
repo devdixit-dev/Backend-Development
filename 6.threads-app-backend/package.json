@@ -1,20 +1,20 @@
 {
   "name": "6.threads-app-backend",
   "version": "1.0.0",
-  "main": "app.js",
-  "type": "module",
+  "main": "index.js",
+  "license": "MIT",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon app.js"
+    "start": "node build/index.js",
+    "dev": "tsc-watch --onSuccess \"npm start\""
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "devDependencies": {
+    "@types/express": "4",
+    "tsc-watch": "^6.3.1",
     "typescript": "^5.8.3"
   },
   "dependencies": {
-    "express": "^5.1.0"
+    "@apollo/server": "^4.12.1",
+    "express": "4",
+    "graphql": "^16.11.0"
   }
 }
