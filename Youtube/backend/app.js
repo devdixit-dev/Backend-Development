@@ -9,7 +9,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/api/jokes', (req, res) => {
-  res.json(
+  const jokes = [
     {
       id: 1,
       title: 'Joke 1',
@@ -35,7 +35,8 @@ app.get('/api/jokes', (req, res) => {
       title: 'Joke 5',
       content: 'Joke 5 content'
     },
-  )
+  ]
+  res.send(jokes)
 });
 
 app.listen(port, () => {
