@@ -1,7 +1,13 @@
 import 'dotenv/config';
 import connectDB from "./db/database.js";
+import app from './app.js';
 
-connectDB();
+connectDB()
+.then(() => {
+  app.on('error', (error) => { console.log(`ERROR in App: ${error}`) });
+  app.listen(process.env.PORT || 8000, () => { console.log(`Express App is running on port ${process.env.PORT} 🚀`) });
+})
+.catch((e) => { console.log(`MongoDB connection failed ${e}`) })
 
 // // this method called efi's (() => {}) ()
 // ;( async() => {
