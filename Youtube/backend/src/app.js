@@ -1,6 +1,7 @@
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
+import 'dotenv/config'
 
 const app = express();
 
@@ -13,6 +14,10 @@ app.use(express.json({ limit: "20kb" }));
 app.use(express.urlencoded({extended: true, limit: "20kb"}));
 app.use(express.static("public"))
 app.use(cookieParser());
+
+import userRouter from './routes/userRoute.js';
+
+app.use('/users', userRouter);
 
 app.get('/', (req, res) => {
   res.send(`Home or / Page`)
